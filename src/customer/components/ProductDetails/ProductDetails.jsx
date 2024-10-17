@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { Radio, RadioGroup } from "@headlessui/react";
-import { Box, Button, Grid2, LinearProgress, Rating } from "@mui/material";
+import { Box, Button, Grid, Rating } from "@mui/material";
 import ProductReviewCard from "./ProductReviewCard";
-import { Margin } from "@mui/icons-material";
+import LinearProgress from "@mui/material/LinearProgress";
+import { mens_kurta } from "../../../Data/mens_kurta";
+import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -16,7 +18,7 @@ const product = {
   ],
   images: [
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
+      src: "https://rukminim1.flixcart.com/image/612/612/xif0q/kurta/l/f/r/xl-k-spl668-yellow-sg-leman-original-imagznqcrahgq9rf.jpeg?q=70",
       alt: "Two each of gray, white, and black shirts laying flat.",
     },
     {
@@ -302,47 +304,129 @@ export default function ProductDetails() {
             </div>
           </div>
         </section>
-
         {/* Review and Rating */}
         <section style={{ marginBottom: "50px" }}>
           <h1 className="font-semibold text-lg pb-4">Recent Review & Rating</h1>
           <div className="border p-5">
-            <Grid2 container spacing={7}>
-              <Grid2 item xs={7} style={{ MarginLeft: "50px" }}>
+            <Grid container spacing={7}>
+              <Grid item xs={7} style={{ MarginLeft: "50px" }}>
                 <div className="space-y-5">
                   {[1, 1, 1].map((item) => (
                     <ProductReviewCard />
                   ))}
                 </div>
-              </Grid2>
-
-              <Grid2 item xs={5}>
+              </Grid>
+              <Grid item xs={5}>
                 <h1 className="text-xl font-semibold pb-1">Product Ratings</h1>
                 <div className="flex items-center space-x-3">
                   <Rating value={4.6} readOnly precision={0.5} />
                   <p className="opacity-60">52147 Ratings</p>
                 </div>
+
                 <Box>
-                  <Grid2
-                    container
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    gap={2}
-                  >
-                    <Grid2 item xs={2}>
-                      <p> Excellent </p>
-                    </Grid2>
-                    <Grid2 item xs={7}>
+                  <Grid container alignItems="center" spacing={2}>
+                    <Grid item xs={2}>
+                      <p>Excellent</p>
+                    </Grid>
+                    <Grid item xs={10} sx={{ minWidth: "100px" }}>
                       <LinearProgress
-                        variant="determine"
-                        value={50}
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          width: "100%",
+                        }}
+                        variant="determinate"
+                        value={40}
                         color="success"
                       />
-                    </Grid2>
-                  </Grid2>
+                    </Grid>
+                  </Grid>
+                  <Grid container alignItems="center" spacing={2}>
+                    <Grid item xs={2}>
+                      <p>Very Good</p>
+                    </Grid>
+                    <Grid item xs={10} sx={{ minWidth: "100px" }}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          width: "100%",
+                        }}
+                        variant="determinate"
+                        value={70}
+                        color="success"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container alignItems="center" spacing={2}>
+                    <Grid item xs={2}>
+                      <p>Good</p>
+                    </Grid>
+                    <Grid item xs={10} sx={{ minWidth: "100px" }}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          width: "100%",
+                        }}
+                        variant="determinate"
+                        value={60}
+                        className="bg-yellow-300"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container alignItems="center" spacing={2}>
+                    <Grid item xs={2}>
+                      <p>Average</p>
+                    </Grid>
+                    <Grid item xs={10} sx={{ minWidth: "100px" }}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          width: "100%",
+                        }}
+                        variant="determinate"
+                        value={30}
+                        color="warning"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container alignItems="center" spacing={2}>
+                    <Grid item xs={2}>
+                      <p>Poor</p>
+                    </Grid>
+                    <Grid item xs={10} sx={{ minWidth: "100px" }}>
+                      <LinearProgress
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          width: "100px",
+                        }}
+                        variant="determinate"
+                        value={10}
+                        color="error"
+                      />
+                    </Grid>
+                  </Grid>
                 </Box>
-              </Grid2>
-            </Grid2>
+              </Grid>
+            </Grid>
+          </div>
+        </section>
+
+        {/* Similar Products */}
+        <section className="pt-10">
+          <h1 className="py-5 text-xl font-bold"> Similar Products</h1>
+          <div className="flex flex-wrap space-y-5">
+            {mens_kurta.map((item) => (
+              <HomeSectionCard product={item} />
+            ))}
           </div>
         </section>
       </div>
